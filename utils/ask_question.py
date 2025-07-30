@@ -13,7 +13,7 @@ def answer_question_with_gemini(question: str) -> str:
     context = ""
     for level, df in datasets.items():
         try:
-            sample = df.head(10).to_string(index=False)
+            sample = df.head(5000).to_string(index=False)
         except Exception:
             sample = "No se pudo cargar muestra para este nivel."
         context += f"\n--- {level.upper()} ---\n{sample}\n"
@@ -27,7 +27,7 @@ Pregunta del usuario:
 Datos:
 {context}
 
-Responde con base en los datos proporcionados, destacando patrones, variaciones o situaciones críticas si aplica. Usa un lenguaje técnico pero claro.
+Responde con base en los datos proporcionados, destacando patrones, variaciones o situaciones críticas si aplica. Usa un lenguaje técnico pero claro. Responde de manera concisa y directa, enfocándote en los hallazgos más relevantes.
 """
 
     try:
